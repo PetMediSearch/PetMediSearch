@@ -30,7 +30,10 @@ const BoardList = () => {
 
   return (
     <div className="boardList-wrapper">
-      <div className="boardList-body">{boardList}</div>
+      <div className="boardList-body">
+        {boardList}
+        {/* 게시판 리스트에 데이터 넣는거 구현하기 */}
+      </div>
       <div className="boardList-footer">
         {/*페이지네이션: count에 페이지 카운트, page에 페이지 번호 넣기*/}
         <Pagination
