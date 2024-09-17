@@ -2,12 +2,16 @@ import { Pagination } from '@mui/material';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
+import './boardList.scss';
+import moment from 'moment';
 
 const BoardList = () => {
   const [pageCount, setPageCount] = useState(0);
   const [boardList, setBoardList] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
+  // 렌더링 되고 한번만 전체 게시물 갯수 가져와서 페이지 카운트 구하기
+  // 렌더링 되고 한번만 페이지에 해당하는 게시물 가져오기
   useEffect(() => {
     // 페이지에 해당하는 게시물 가져오기
     const getBoardList = async () => {
@@ -30,14 +34,8 @@ const BoardList = () => {
 
   return (
     <div className="boardList-wrapper">
-<<<<<<< HEAD
-      <div className="boardList-body">
-        {boardList}
-        {/* 게시판 리스트에 데이터 넣는거 구현하기 */}
-      </div>
-=======
+      <div className="boardList-header">전체 게시물 📝</div>
       <div className="boardList-body">{boardList}</div>
->>>>>>> origin
       <div className="boardList-footer">
         {/*페이지네이션: count에 페이지 카운트, page에 페이지 번호 넣기*/}
         <Pagination
@@ -56,5 +54,4 @@ const BoardList = () => {
     </div>
   );
 };
-
 export default BoardList;
