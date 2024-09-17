@@ -35,7 +35,10 @@ const BoardList = () => {
   return (
     <div className="boardList-wrapper">
       <div className="boardList-header">전체 게시물 📝</div>
-      <div className="boardList-body">{boardList}</div>
+      <div className="boardList-body">
+        {boardList}
+        {/*BoradList에 데이터 받기 구현하기*/}
+      </div>
       <div className="boardList-footer">
         {/*페이지네이션: count에 페이지 카운트, page에 페이지 번호 넣기*/}
         <Pagination
