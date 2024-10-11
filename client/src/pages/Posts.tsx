@@ -1,29 +1,40 @@
 import styled from 'styled-components';
-import Programming from '../components/common/Programming';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Post from '../components/PostList';
+import PostList from '../components/PostList';
+import { HiOutlinePencilSquare } from 'react-icons/hi2';
+import MainCategory from '../Category/MainCategory';
 
-function Posts() {
+export default function Posts() {
   const [posts, setPosts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(10);
+  const [category, setCategory] = useState();
+
+  const handleWriteNaviageClick = () => {};
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get('http://localhost:8080/api/posts');
+      const response = await axios.get('http://localhost:8080/posts');
       setPosts(response.data);
     };
     fetchData();
   }, []);
 
   return (
-    <PostsStyle>
-      <Post post={posts} />
-    </PostsStyle>
+    <Container>
+      <MainCategory category={category} setCategory={setCategory} />
+      <WriteContainer>
+        <WriteBt onClick={handleWriteNaviageClick}>
+          <HiOutlinePencilSquare size={30} />
+        </WriteBt>
+      </WriteContainer>
+
+      <PostList posts={posts} category={category} />
+    </Container>
   );
 }
 
-const PostsStyle = styled.div``;
+const Container = styled.div``;
 
-export default Posts;
+const WriteContainer = styled.div``;
+
+const WriteBt = styled.button``;

@@ -1,19 +1,25 @@
-import React from 'react';
+import styled from 'styled-components';
 import { PostState } from '../types/type';
+import Post from './Post';
 
-interface Props {
-  post: PostState[];
+export default function PostList({
+  posts,
+  category,
+}: {
+  posts: PostState[];
+  category: any;
+}) {
+  return (
+    <PostsContainer>
+      {posts.map((post) => {
+        for (let i = 0; i < post.category.length; i++) {
+          if (category === post.category[i]) {
+            return <Post post={post} key={post.id} />;
+          }
+        }
+      })}
+    </PostsContainer>
+  );
 }
 
-const Post = ({ post }: Props) => {
-  return (
-    <>
-      <div>
-        {post.map((post) => (
-          <p key={post.id}>{post.title}</p>
-        ))}
-      </div>
-    </>
-  );
-};
-export default Post;
+const PostsContainer = styled.div``;
