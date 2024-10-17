@@ -2,13 +2,12 @@ const fs = require('fs');
 const mysql = require('mysql2/promise');
 const path = require('path');
 
-
 const dbConfig = {
-  host: '3.36.94.30',
+  host: 'localhost',
   port: 3306,
-  user: 'pms_admin',
-  password: "PetMedi#2024",
-  database: 'PetMediSearch_DB',
+  user: 'root',
+  password: 'password',
+  database: 'petmedisearch',
 };
 
 function validateAndConvert(value, type) {
@@ -27,7 +26,7 @@ function validateAndConvert(value, type) {
 async function insertData(filePath, type) {
   const absoluteFilePath = path.resolve(__dirname, filePath);
   console.log(`Attempting to read file: ${absoluteFilePath}`);
-
+  
   if (!fs.existsSync(absoluteFilePath)) {
     console.error(`File not found: ${absoluteFilePath}`);
     return;
